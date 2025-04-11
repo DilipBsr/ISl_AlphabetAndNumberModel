@@ -8,6 +8,7 @@ import itertools
 import copy
 import string
 from tensorflow import keras
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -67,4 +68,5 @@ def predict_sign():
     })
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
